@@ -1,0 +1,8 @@
+{
+    "wizard": {
+        "title": "Welcome to MUTHUR",
+        "subtitle": "Machine Understanding Tool for Homelab Utility & Response",
+        "language_selection": "Select Your Language",
+        "continue": "Continue"
+    }
+}
