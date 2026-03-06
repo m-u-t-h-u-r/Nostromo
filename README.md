@@ -16,7 +16,7 @@ Nostromo/
 │   ├── _index.json                 # Root catalog metadata
 │   └── {category}/
 │       └── {subcategory}/
-│           └── {leaf_node}/ 
+│           └── {leaf_node}/        # Mapped using the `about` property with a `DefinedTerm`
 │               ├── _index.json     
 │               └── {app_name}.json # The standard Schema.org Application metadata
 │
@@ -47,6 +47,7 @@ All applications added to Nostromo must abide by the MUTHUR Schema governance.
 - Deployment manifests (`docker-compose.yml`, shell scripts) **are never** embedded in the JSON structure. They must be submitted to the `install/` directory.
 - The `library/.../{app_name}.json` file acts merely as a pointer to those exact deployment scripts using relative paths.
 - Taxonomy categories and IDs must use strict lowercase underscore routing (e.g., `infrastructure_management/`).
+- The third-tier `leaf_node` categorization is semantically mapped within the JSON-LD using the Schema.org `about` property with a `DefinedTerm`, ensuring granular taxonomy context is preserved for LLMs.
 
 ## Air-Gapped / Offline Usage
 Nostromo is designed for high-availability offline homelabs. It is available as a standalone, persistent Docker container via GHCR (`ghcr.io/m-u-t-h-u-r/nostromo-local`). This proxy container serves the library and assets locally, allowing MUTHUR to deploy applications natively via SSH without requiring a connection to GitHub.
