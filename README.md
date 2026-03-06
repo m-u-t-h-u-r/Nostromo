@@ -1,29 +1,52 @@
 # Nostromo
-**Deployment & Configuration File Library for M.U.T.H.U.R**
+**The MUTHUR Application Library & Deployment Catalog**
 
-Nostromo acts as the central repository for all functional deployment payloads, configuration templates, and orchestration files referenced by the **[MUTHUR](https://github.com/m-u-t-h-u-r/muthur)** Application Taxonomy engine. 
+Nostromo acts as the primary decoupled, external data repository that powers the **[MUTHUR](https://github.com/m-u-t-h-u-r/muthur)** platform. While MUTHUR handles the intelligence, RAG routing, and user interface, Nostromo serves as the strictly-governed "Infrastructure as Data" library containing 2,600+ self-hosted applications and their deployment manifests.
 
-To maintain a clean schema, the MUTHUR JSON taxonomy operates on a referential decoupled architecture—it points to the exact URLs housed in this repository rather than embedding massive YAML payloads directly into the application metadata.
+By separating the application library from the core application logic, MUTHUR achieves offline capability, instant local loading (via shallow git clones), and allows the open-source community to contribute to the dataset without altering the core AI engine.
 
-## Repository Structure
-This library is organized by deployment methodology and application:
+## Repository Architecture
+Nostromo is a Semantic Linked Data Catalog. Every level of the directory tree contains an `_index.json` (JSON-LD) file detailing its ontological purpose.
+
+This library is organized into five primary domains:
 
 ```text
 Nostromo/
-├── install/
-│   ├── bare_metal/
-│   │   └── {app_name}/          # Bash scripts, Ansible Playbooks, APT dependencies
-│   ├── container/
-│   │   └── {app_name}/          # docker-compose.yml, Helm Charts, Portainer templates
-│   └── vm/
-│       └── {app_name}/          # Cloud-init templates, OVA download references
-├── config/                      # Default application configurations
-└── scripts/                     # Reusable utility orchestration scripts
+├── library/                        # 1. The Core JSON-LD Datastore
+│   ├── _index.json                 # Root catalog metadata
+│   └── {category}/
+│       └── {subcategory}/
+│           └── {leaf_node}/ 
+│               ├── _index.json     
+│               └── {app_name}.json # The standard Schema.org Application metadata
+│
+├── install/                        # 2. Deployment Manifests
+│   ├── _index.json
+│   ├── bare_metal/                 # Bash scripts, Ansible Playbooks
+│   ├── container/                  # docker-compose.yml, Portainer templates
+│   └── vm/                         # Cloud-init templates, OVA references
+│
+├── assets/                         # 3. Offline Media Cache
+│   ├── _index.json
+│   ├── icons/                      # Local application icons
+│   └── screenshots/                # Application GUIs and UI previews
+│
+├── schemas/                        # 4. Governance Data Schemas
+│   ├── _index.json
+│   └── muthur_app_v2.schema.json   # Strict JSON Schema for CI/CD validation
+│
+└── translations/                   # 5. Internationalization Strings
+    ├── _index.json
+    └── en_US.json                  # Locale mappings for app descriptions
 ```
 
-## Contributing
-When MUTHUR detects or interacts with a homelab application, it retrieves the necessary deployment or troubleshooting instructions from this repository via GitHub raw file links. 
-When adding a new application to the MUTHUR taxonomy:
-1. Create the appropriate `{app_name}` directory under the correct `install/` method inside this repo.
-2. Commit your deployment artifacts (e.g., `docker-compose.yml`).
-3. Take the raw URL of the committed file and embed it into the MUTHUR application JSON schema (in `G:\Repos\M-U-T-H-U-R\Conversations\JSON_Data\...`).
+## Contributing & Governance
+*(Note: Full contribution guidelines are currently paused while the MUTHUR Category Taxonomy is finalized.)*
+
+All applications added to Nostromo must abide by the MUTHUR Schema governance. 
+- Deployment manifests (`docker-compose.yml`, shell scripts) **are never** embedded in the JSON structure. They must be submitted to the `install/` directory.
+- The `library/.../{app_name}.json` file acts merely as a pointer to those exact deployment scripts using relative paths.
+- Taxonomy categories and IDs must use strict lowercase underscore routing (e.g., `infrastructure_management/`).
+
+## Air-Gapped / Offline Usage
+Nostromo is designed for high-availability offline homelabs. It is available as a standalone, persistent Docker container via GHCR (`ghcr.io/m-u-t-h-u-r/nostromo-local`). This proxy container serves the library and assets locally, allowing MUTHUR to deploy applications natively via SSH without requiring a connection to GitHub.
