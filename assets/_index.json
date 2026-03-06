@@ -1,0 +1,16 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Collection",
+    "identifier": "nostromo_assets",
+    "name": "Offline Media Cache",
+    "description": "Locally cached graphical assets, application icons, and UI screenshots required for offline or air-gapped MUTHUR dashboard rendering of applications.",
+    "keywords": [
+        "assets",
+        "icons",
+        "images",
+        "screenshots",
+        "media",
+        "cache",
+        "offline"
+    ]
+}

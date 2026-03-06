@@ -1,0 +1,14 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Collection",
+    "identifier": "nostromo_library",
+    "name": "MUTHUR Application Library",
+    "description": "The root catalog containing all taxonomy-mapped homelab applications in native JSON-LD format.",
+    "keywords": [
+        "homelab",
+        "applications",
+        "catalog",
+        "taxonomy",
+        "metadata"
+    ]
+}

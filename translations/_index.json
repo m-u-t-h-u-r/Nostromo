@@ -1,0 +1,14 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Collection",
+    "identifier": "nostromo_translations",
+    "name": "Internationalization Strings",
+    "description": "Locale files mapping application descriptions and taxonomy labels directly to multiple languages to support international MUTHUR frontends.",
+    "keywords": [
+        "i18n",
+        "translations",
+        "locale",
+        "internationalization",
+        "languages"
+    ]
+}

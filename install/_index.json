@@ -1,0 +1,15 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Collection",
+    "identifier": "nostromo_install_manifests",
+    "name": "Installation Templates & Manifests",
+    "description": "Deployment manifests, provisioning scripts, and configuration templates (e.g., docker-compose.yml, ansible playbooks) referenced by the MUTHUR application metadata for the deployment of applications.",
+    "keywords": [
+        "deployment",
+        "manifests",
+        "docker-compose",
+        "scripts",
+        "provisioning",
+        "orchestration"
+    ]
+}

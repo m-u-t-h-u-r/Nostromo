@@ -1,0 +1,14 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Collection",
+    "identifier": "nostromo_schemas",
+    "name": "Governance Data Schemas",
+    "description": "Strict JSON Schema validation files enforcing the formal data structures for the MUTHUR taxonomy pipeline.",
+    "keywords": [
+        "schema",
+        "validation",
+        "json-schema",
+        "governance",
+        "ci-cd"
+    ]
+}
